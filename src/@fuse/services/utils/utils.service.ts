@@ -20,7 +20,7 @@ export class FuseUtilsService
     }
 
     setCounter(counter : number) {
-        console.log("setCounter");
+        //console.log("setCounter");
         this.count.next(this.cartCounter = counter);
     }
 

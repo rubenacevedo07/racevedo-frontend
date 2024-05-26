@@ -21,7 +21,7 @@ export class AuthSession {
   
     setToken(token: string): void {
       this._authSession.set('token', token);
-      console.log('setToken', Boolean);
+      //console.log('setToken', Boolean);
     }
   
     removeToken(): void {

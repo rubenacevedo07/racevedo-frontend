@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation, inject, Injectable } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
@@ -20,6 +20,7 @@ import { ShortcutsComponent } from 'app/layout/common/shortcuts/shortcuts.compon
 import { UserComponent } from 'app/layout/common/user/user.component';
 import { Subject, takeUntil } from 'rxjs';
 import { FuseUtilsService } from '@fuse/services/utils/utils.service';
+import { CartService } from 'app/layout/common/cart/cart.service';
 
 @Component({
     selector     : 'classy-layout',
@@ -30,11 +31,12 @@ import { FuseUtilsService } from '@fuse/services/utils/utils.service';
 })
 export class ClassyLayoutComponent implements OnInit, OnDestroy
 {
+    private cartService = inject(CartService);
     isScreenSmall: boolean;
     navigation: Navigation;
     user: User;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
-    public cartCounter: number = 0;
+    public cartItemsCount: number = 0;
     /**
      * Constructor
      */
@@ -71,8 +73,8 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        this._fuseUtilsService.count.subscribe(c => {
-            this.cartCounter = c;
+        this.cartService.cartItemsCount$.subscribe(c => {
+            this.cartItemsCount = c;
         });
         // Subscribe to navigation data
         this._navigationService.navigation$
@@ -113,9 +115,9 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
-    nextCount() {
+    /*nextCount() {
         this._fuseUtilsService.nextCount();
-    }
+    }*/
     
     /**
      * Toggle navigation

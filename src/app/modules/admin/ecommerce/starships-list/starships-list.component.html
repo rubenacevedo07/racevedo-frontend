@@ -1,0 +1,69 @@
+<div class="flex flex-col flex-auto min-w-0">
+
+    <!-- Header -->
+    <div
+        class="flex flex-col sm:flex-row flex-0 sm:justify-between p-6 sm:py-5 sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs 
+          <div class="flex flex-wrap font-medium">
+              <a class="whitespace-nowrap text-primary-500">User Interface</a>
+              <div class="flex ml-1 whitespace-nowrap">
+                  <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+                  <a class="ml-1 text-primary-500">Page Layouts</a>
+              </div>
+          </div>-->
+            <!-- Title -->
+            <div class="">
+                <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    Starships
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="flex-auto p-6 sm:p-10 center-container rac-align-items">
+        <ng-template #loading>
+            <div class="flex flex-wrap items-start w-full max-w-400 -m-4  center-container-col">
+                <mat-progress-spinner></mat-progress-spinner>
+            </div>
+        </ng-template>
+        <!-- CONTENT GOES HERE -->
+        <div class="flex flex-wrap items-start w-full max-w-400 -m-4  center-container-col" *ngIf="isLoading$ | async ; else loading">
+            <fuse-card class="flex flex-col max-w-80 w-full filter-shopping  rac-card"
+                *ngFor="let item of repos.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize)">
+                <img class="object-cover" src={{item.image}} alt="Card cover image">
+                <div class="m-8 mt-6 mb-8 card-title-top-margin-rac">
+                    <div class="flex justify-between">
+                        <div class="flex flex-col">
+                            <div class="text-xl font-semibold leading-tight">{{item.name}}</div>
+                            <div class="text-md text-secondary">{{item.starship_class}}</div>
+                            <div class="text-xl mb-1">
+                                ∢{{item.cost_in_credits}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-4 mt-1">
+                        <div class="flex items-center">
+                            <mat-form-field subscriptSizing="dynamic">
+                                <mat-select [placeholder]="'Quantity'" id="{{item.id}}"
+                                    [(ngModel)]="selectedQuantity[item.id]">
+                                    <mat-option *ngFor="let value of possibleValues" [value]="value">
+                                        {{ value }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="flex items-center">
+                            <button mat-button [color]="'primary'" [disabled]="!selectedQuantity[item.id]"
+                                (click)="addCounter(item)" class="primary fuse-mat-button-large w-full h-full">Add to
+                                cart</button>
+                        </div>
+                    </div>
+                </div>
+            </fuse-card>
+        </div>
+    </div>
+    <mat-paginator [length]="repos.length" [pageSize]="pageSize" (page)="onPageChange($event)"></mat-paginator>
+
+</div>

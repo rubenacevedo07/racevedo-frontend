@@ -1,12 +1,12 @@
 import { NgIf } from '@angular/common';
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertComponent, FuseAlertType } from '@fuse/components/alert';
 import { FuseValidators } from '@fuse/validators';
@@ -21,16 +21,20 @@ import { finalize } from 'rxjs';
     standalone   : true,
     imports      : [NgIf, FuseAlertComponent, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule, RouterLink],
 })
+
 export class AuthResetPasswordComponent implements OnInit
 {
     @ViewChild('resetPasswordNgForm') resetPasswordNgForm: NgForm;
+    @Input('token') token!:string;
 
     alert: { type: FuseAlertType; message: string } = {
         type   : 'success',
         message: '',
     };
+
     resetPasswordForm: UntypedFormGroup;
     showAlert: boolean = false;
+    http: any;
 
     /**
      * Constructor
@@ -38,6 +42,7 @@ export class AuthResetPasswordComponent implements OnInit
     constructor(
         private _authService: AuthService,
         private _formBuilder: UntypedFormBuilder,
+        private _router: ActivatedRoute 
     )
     {
     }
@@ -60,6 +65,9 @@ export class AuthResetPasswordComponent implements OnInit
                 validators: FuseValidators.mustMatch('password', 'passwordConfirm'),
             },
         );
+        this._router.queryParamMap.subscribe(params => {
+            this.token = params.get("token")
+        });
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -84,7 +92,7 @@ export class AuthResetPasswordComponent implements OnInit
         this.showAlert = false;
 
         // Send the request to the server
-        this._authService.resetPassword(this.resetPasswordForm.get('password').value)
+        this._authService.resetPassword(this.token, this.resetPasswordForm.get('password').value)
             .pipe(
                 finalize(() =>
                 {
@@ -99,22 +107,24 @@ export class AuthResetPasswordComponent implements OnInit
                 }),
             )
             .subscribe(
-                (response) =>
-                {
-                    // Set the alert
-                    this.alert = {
-                        type   : 'success',
-                        message: 'Your password has been reset.',
-                    };
-                },
-                (response) =>
-                {
-                    // Set the alert
-                    this.alert = {
-                        type   : 'error',
-                        message: 'Something went wrong, please try again.',
-                    };
-                },
+                (response) => {
+                    if (response) {
+                        // Set the alert
+                        this.alert = {
+                            type: 'success',
+                            message: 'Your password has been reset.',
+                        };
+                    } else {
+                        this.alert = {
+                            type: 'error',
+                            message: 'Something went wrong, please try again.',
+                        };
+                    }
+
+                }
             );
     }
+
+    
+
 }

@@ -11,6 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertComponent, FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
+import { finalize } from 'rxjs';
 
 @Component({
     selector     : 'auth-sign-up',
@@ -51,6 +52,7 @@ export class AuthSignUpComponent implements OnInit
      */
     ngOnInit(): void
     {
+        console.log("test");
         // Create the form
         this.signUpForm = this._formBuilder.group({
                 firstname : ['', Validators.required],
@@ -72,7 +74,6 @@ export class AuthSignUpComponent implements OnInit
      */
     signUp(): void
     {
-        console.log(this.signUpForm.value);
         // Do nothing if the form is invalid
         if ( this.signUpForm.invalid )
         {
@@ -87,29 +88,38 @@ export class AuthSignUpComponent implements OnInit
 
         // Sign up
         this._authService.signUp(this.signUpForm.value)
-            .subscribe(
-                (response) =>
-                {
-                    // Navigate to the confirmation required page
-                    this._router.navigateByUrl('/confirmation-required');
-                },
-                (response) =>
-                {
+            .pipe(
+                finalize(() => {
                     // Re-enable the form
                     this.signUpForm.enable();
 
                     // Reset the form
                     this.signUpNgForm.resetForm();
 
-                    // Set the alert
-                    this.alert = {
-                        type   : 'error',
-                        message: 'Something went wrong, please try again.',
-                    };
-
                     // Show the alert
                     this.showAlert = true;
-                },
+                }),
+            )
+            .subscribe(
+                (response) => {
+                    console.log(response);
+                    if (response.valid) {
+                        // Navigate to the confirmation required page
+                        this._router.navigateByUrl('/confirmation-required');
+                    } else {
+                        if(response.errorMessage == null) {
+                            this.alert = {
+                                type: 'error',
+                                message: 'An error occurred. Please try again.',
+                            };
+                        }
+                        this.alert = {
+                            type: 'error',
+                            message: response.errorMessage,
+                        };
+                    }
+
+                }
             );
     }
 }

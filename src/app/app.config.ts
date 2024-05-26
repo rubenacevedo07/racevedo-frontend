@@ -1,5 +1,5 @@
 import { provideHttpClient } from '@angular/common/http';
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { LuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -10,31 +10,39 @@ import { provideAuth } from 'app/core/auth/auth.provider';
 import { provideIcons } from 'app/core/icons/icons.provider';
 import { provideTransloco } from 'app/core/transloco/transloco.provider';
 import { mockApiServices } from 'app/mock-api';
+import { RecaptchaV3Module, ReCaptchaV3Service, RECAPTCHA_V3_SITE_KEY, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { environment } from 'environment';
 
 export const appConfig: ApplicationConfig = {
     providers: [
+
         provideAnimations(),
         provideHttpClient(),
         provideRouter(appRoutes,
             withPreloading(PreloadAllModules),
-            withInMemoryScrolling({scrollPositionRestoration: 'enabled'}),
+            withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
         ),
-
+        importProvidersFrom(
+            RecaptchaV3Module, ReCaptchaV3Service
+        ),
         // Material Date Adapter
         {
-            provide : DateAdapter,
+            provide: DateAdapter,
             useClass: LuxonDateAdapter,
         },
+
+        { provide: RECAPTCHA_V3_SITE_KEY, useValue: environment.recaptchaV3SiteKey },
+
         {
-            provide : MAT_DATE_FORMATS,
+            provide: MAT_DATE_FORMATS,
             useValue: {
-                parse  : {
+                parse: {
                     dateInput: 'D',
                 },
                 display: {
-                    dateInput         : 'DDD',
-                    monthYearLabel    : 'LLL yyyy',
-                    dateA11yLabel     : 'DD',
+                    dateInput: 'DDD',
+                    monthYearLabel: 'LLL yyyy',
+                    dateA11yLabel: 'DD',
                     monthYearA11yLabel: 'LLLL yyyy',
                 },
             },
@@ -48,42 +56,42 @@ export const appConfig: ApplicationConfig = {
         provideIcons(),
         provideFuse({
             mockApi: {
-                delay   : 0,
+                delay: 0,
                 services: mockApiServices,
             },
-            fuse   : {
-                layout : 'classy',
-                scheme : 'light',
+            fuse: {
+                layout: 'classy',
+                scheme: 'light',
                 screens: {
                     sm: '600px',
                     md: '960px',
                     lg: '1280px',
                     xl: '1440px',
                 },
-                theme  : 'theme-default',
-                themes : [
+                theme: 'theme-default',
+                themes: [
                     {
-                        id  : 'theme-default',
+                        id: 'theme-default',
                         name: 'Default',
                     },
                     {
-                        id  : 'theme-brand',
+                        id: 'theme-brand',
                         name: 'Brand',
                     },
                     {
-                        id  : 'theme-teal',
+                        id: 'theme-teal',
                         name: 'Teal',
                     },
                     {
-                        id  : 'theme-rose',
+                        id: 'theme-rose',
                         name: 'Rose',
                     },
                     {
-                        id  : 'theme-purple',
+                        id: 'theme-purple',
                         name: 'Purple',
                     },
                     {
-                        id  : 'theme-amber',
+                        id: 'theme-amber',
                         name: 'Amber',
                     },
                 ],

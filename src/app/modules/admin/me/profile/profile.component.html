@@ -1,0 +1,71 @@
+<div class="flex flex-col flex-auto min-w-0">
+
+    <!-- Header -->
+    <div class="flex flex-col shadow bg-card">
+
+        <!-- Cover image -->
+        <div>
+            <img
+                class="h-40 lg:h-80 object-cover"
+                src="assets/images/pages/profile/cover.jpg"
+                alt="Cover image">
+        </div>
+
+        <!-- User info -->
+        <div class="flex flex-col flex-0 lg:flex-row items-center max-w-5xl w-full mx-auto px-8 lg:h-18 bg-card">
+
+            <!-- Avatar -->
+            <div class="-mt-26 lg:-mt-22 rounded-full">
+                <img
+                    class="w-32 h-32 rounded-full ring-4 ring-bg-card"
+                    src="assets/images/avatars/rac.png"
+                    alt="User avatar">
+            </div>
+
+            <!-- Details -->
+            <div class="flex flex-col items-center lg:items-start mt-4 lg:mt-0 lg:ml-8">
+                <div class="text-lg font-bold leading-none">Ruben Acevedo</div>
+                <div class="text-secondary">Munich, GER</div>
+            </div>
+
+            <!-- Separator -->
+            <div class="hidden lg:flex h-8 mx-8 border-l-2"></div>
+
+            <!-- Stats -->
+            <div class="flex items-center mt-6 lg:mt-0 space-x-6">
+                <div class="flex flex-col items-center">
+                    <span class="font-bold">12 years</span>
+                    <span class="text-sm font-medium text-secondary">EXPERIENCE</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="font-bold">B2</span>
+                    <span class="text-sm font-medium text-secondary">GERMAN</span>
+                </div> 
+            </div>
+
+            <!-- Menu -->
+            <div class="flex items-center mt-8 mb-4 lg:m-0 lg:ml-auto space-x-6">
+                <button class="font-medium text-primary" name="cert" id="cert" (click)="showCertifications()">Certifications</button>
+                <button class="font-medium" name="cv" id="cv" (click)="showCV()">CV</button>
+           </div>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="flex flex-auto justify-center w-full max-w-5xl mx-auto p-6 sm:p-8">
+          
+        <div *ngIf="certifications">
+            <app-certifications></app-certifications>
+        </div>
+
+        <div *ngIf="cv">
+            <app-cv></app-cv>
+        </div>
+
+        <div *ngIf="contact">
+            <app-contact></app-contact>
+        </div>
+
+    </div>
+
+</div>

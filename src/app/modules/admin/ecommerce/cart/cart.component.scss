@@ -1,0 +1,49 @@
+.rac-card {
+    margin: 16px !important;
+}
+
+.max-width-column {
+    width: 110px;
+}
+
+.rac-button {
+    border: 1px solid;
+    max-width: 56px;
+    border-radius: 6px;
+    margin-left: 8px;
+    text-align: center;
+}
+
+.product-column {
+    padding-left: 0 !important;
+}
+
+.hr-margin {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.mdc-text-field__input {
+    margin-bottom: 16px !important;
+}
+
+.mat-mdc-form-field-flex {
+    height: 28px !important;
+}
+
+input.mat-form-field.rac-input {
+    margin-top: 14px !important;
+}
+
+input[matInput][type=number] {
+
+    /* Chrome, Safari, Edge, Opera */
+    ::-webkit-outer-spin-button,
+    ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    -moz-appearance: textfield;
+}

@@ -1,0 +1,84 @@
+<div class="flex flex-col flex-auto min-w-0">
+
+    <!-- Header -->
+    <div
+        class="flex flex-col sm:flex-row flex-0 sm:justify-between p-6 sm:py-5 sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs 
+          <div class="flex flex-wrap font-medium">
+              <a class="whitespace-nowrap text-primary-500">User Interface</a>
+              <div class="flex ml-1 whitespace-nowrap">
+                  <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_mini:chevron-right'"></mat-icon>
+                  <a class="ml-1 text-primary-500">Page Layouts</a>
+              </div>
+          </div>-->
+            <!-- Title -->
+            <div class="">
+                <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    User
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="flex-auto p-6 sm:p-10">
+
+        <div class="max-w-3xl">
+
+            <form class="flex flex-col px-8 pt-10 bg-card shadow rounded overflow-hidden" [formGroup]="editUserForm"
+                #editUserNgForm="ngForm">
+                <div class="flex flex-col gt-xs:flex-row gt-xs:items-start">
+                    <div class="gt-xs:max-w-80 gt-xs:pr-12">
+                        <p class="text-lg font-medium">Profile</p>
+                        <p class="text-secondary mb-6">
+                            User information
+                        </p>
+                    </div>
+
+                    <div class="flex">
+                        <mat-form-field class="flex-auto">
+
+                            <mat-label>First name</mat-label>
+                            <input matInput [placeholder]="'Your first name'" id="firstName" matInput
+                                [formControlName]="'firstName'">
+                            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+                            </mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div class="flex">
+                        <mat-form-field class="flex-auto">
+                            <mat-label>Last name</mat-label>
+                            <input matInput [placeholder]="'Your last name'" id="lastName" matInput
+                                [formControlName]="'lastName'">
+                            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'">
+                            </mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div class="flex-auto min-w-64">
+                        <div class="flex">
+                            <mat-form-field class="flex-auto">
+                                <mat-label>Email Address</mat-label>
+                                <input matInput [placeholder]="'mail@company.com'" id="email" matInput
+                                    [formControlName]="'email'">
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:envelope'">
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end border-t -mx-8 mt-8 px-8 py-5 bg-gray-50 dark:bg-gray-700">
+                    <button class="px-6 ml-3 text-p" [color]="'primary'" [type]="'button'" mat-flat-button
+                        (click)="submit()">
+                        Save
+                    </button>
+                </div>
+            </form>
+            <!-- Alert -->
+            <fuse-alert class="mt-8" *ngIf="showAlert" [appearance]="'outline'" [showIcon]="false" [type]="alert.type"
+                [@shake]="alert.type === 'error'">
+                {{alert.message}}
+            </fuse-alert>
+        </div>
+    </div>
+</div>

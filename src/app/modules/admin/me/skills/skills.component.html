@@ -1,0 +1,252 @@
+<!-- Header 
+    <div class="relative flex-0 py-8 px-4 sm:p-16 overflow-hidden bg-gray-800 dark">
+       
+        <svg class="absolute inset-0 pointer-events-none"
+             viewBox="0 0 960 540" width="100%" height="100%" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+            <g class="text-gray-700 opacity-25" fill="none" stroke="currentColor" stroke-width="100">
+                <circle r="234" cx="196" cy="23"></circle>
+                <circle r="234" cx="790" cy="491"></circle>
+            </g>
+        </svg>
+       
+        <div class="z-10 relative flex flex-col items-center">
+            <h2 class="text-xl font-semibold">FUSE ACADEMY</h2>
+            <div class="mt-1 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight text-center">
+                What do you want to learn today?
+            </div>
+            <div class="max-w-2xl mt-6 sm:text-2xl text-center tracking-tight text-secondary">
+                Our courses will step you through the process of a building small applications, or adding new features to existing applications.
+            </div>
+        </div>
+    </div>-->
+
+<!-- Main -->
+
+
+    <div class="flex flex-col flex-auto w-full max-w-xs sm:max-w-5xl mx-auto">
+
+        <div class="flex flex-col sm:flex-row items-center justify-between w-full max-w-xs sm:max-w-none">
+            <!--<mat-form-field
+                    class="w-full sm:w-36"
+                    [subscriptSizing]="'dynamic'">
+                    <mat-select
+                        [value]="'all'"
+                        (selectionChange)="filterByCategory($event)">
+                        <mat-option [value]="'all'">All</mat-option>
+                        <ng-container *ngFor="let category of categories; trackBy: trackByFn">
+                            <mat-option [value]="category.slug">{{category.title}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field
+                    class="w-full sm:w-72 mt-4 sm:mt-0 sm:ml-4"
+                    [subscriptSizing]="'dynamic'">
+                    <mat-icon
+                        matPrefix
+                        class="icon-size-5"
+                        [svgIcon]="'heroicons_solid:magnifying-glass'"></mat-icon>
+                    <input
+                        (input)="filterByQuery(query.value)"
+                        placeholder="Search by title or description"
+                        matInput
+                        #query>
+                </mat-form-field>
+                <mat-slide-toggle
+                    class="mt-8 sm:mt-0 sm:ml-auto"
+                    [color]="'primary'"
+                    (change)="toggleCompleted($event)">
+                    Hide completed
+                </mat-slide-toggle>
+            </div>-->
+            <ng-container>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 sm:mt-10">
+                    <ng-container>
+                        <!-- Course -->
+                        <div class="flex flex-col h-96 shadow rounded-2xl overflow-hidden bg-card max-rac">
+                            <div class="flex flex-col p-6">
+                                <div class="flex items-center justify-between"><div class="py-0.5 px-3 rounded-full text-sm font-semibold text-blue-800 bg-blue-100 dark:text-blue-50 dark:bg-blue-500 ng-star-inserted"> Web </div><!----><!----><div class="flex items-center"><mat-icon role="img" class="mat-icon notranslate mat-mdc-tooltip-trigger icon-size-5 text-green-600 mat-icon-no-color ng-star-inserted" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="check-badge" data-mat-icon-namespace="heroicons_solid" aria-describedby="cdk-describedby-message-ng-1-23" cdk-describedby-host="ng-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
+                                    <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"></path>
+                                </svg></mat-icon><!----><!----><!----></div></div>
+                                <!-- Course title & description -->
+                                <div class="mt-4 text-lg font-medium">Basics of Angular</div>
+                                <div class="mt-0.5 line-clamp-2 text-secondary">Introductory course for Angular and framework basics</div>
+                                <div class="w-12 h-1 my-3 border-t-2"></div>
+                                <!-- Course time -->
+                                <div class="flex items-center leading-5 text-md text-secondary">
+                                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'">
+                                    </mat-icon>
+                                    <div class="ml-1.5">Duration in minutes</div>
+                                </div>
+                                <!-- Course completion -->
+                                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:academic-cap'">
+                                    </mat-icon>
+
+                                    <ng-container>
+                                        <div class="ml-1.5">
+                                            <span>Completed</span>
+                                            <span class="ml-1">
+                                                <!-- Once -->
+                                                <ng-container>once</ng-container>
+                                            </span>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                            <!-- Footer -->
+                            <div class="flex flex-col w-full mt-auto">
+                                <!-- Course progress -->
+                                <div class="relative h-0.5">
+                                    <div class="z-10 absolute inset-x-0 h-6 -mt-3"></div>
+                                    <mat-progress-bar class="h-0.5" [value]="100"></mat-progress-bar>
+                                </div>
+
+                                <!-- Course launch button -->
+                                <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
+                                    <a mat-stroked-button [routerLink]="">
+                                        <span class="inline-flex items-center">
+                                            <!-- Started -->
+                                            <ng-container>
+                                                <span>Link</span>
+                                            </ng-container>
+
+                                            <mat-icon class="ml-1.5 icon-size-5"
+                                                [svgIcon]="'heroicons_solid:arrow-small-right'"></mat-icon>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                
+            </ng-container>
+            <ng-container>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 sm:mt-10 ">
+                    <ng-container>
+                        <!-- Course -->
+                        <div class="flex flex-col h-96 shadow rounded-2xl overflow-hidden bg-card max-rac">
+                            <div class="flex flex-col p-6">
+                                <div class="flex items-center justify-between"><div class="py-0.5 px-3 rounded-full text-sm font-semibold text-blue-800 bg-blue-100 dark:text-blue-50 dark:bg-blue-500 ng-star-inserted"> Web </div><!----><!----><div class="flex items-center"><mat-icon role="img" class="mat-icon notranslate mat-mdc-tooltip-trigger icon-size-5 text-green-600 mat-icon-no-color ng-star-inserted" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="check-badge" data-mat-icon-namespace="heroicons_solid" aria-describedby="cdk-describedby-message-ng-1-23" cdk-describedby-host="ng-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
+                                    <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"></path>
+                                </svg></mat-icon><!----><!----><!----></div></div>
+                                <!-- Course title & description -->
+                                <div class="mt-4 text-lg font-medium">Basics of Angular</div>
+                                <div class="mt-0.5 line-clamp-2 text-secondary">Introductory course for Angular and framework basics</div>
+                                <div class="w-12 h-1 my-3 border-t-2"></div>
+                                <!-- Course time -->
+                                <div class="flex items-center leading-5 text-md text-secondary">
+                                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'">
+                                    </mat-icon>
+                                    <div class="ml-1.5">Duration in minutes</div>
+                                </div>
+                                <!-- Course completion -->
+                                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:academic-cap'">
+                                    </mat-icon>
+
+                                    <ng-container>
+                                        <div class="ml-1.5">
+                                            <span>Completed</span>
+                                            <span class="ml-1">
+                                                <!-- Once -->
+                                                <ng-container>once</ng-container>
+                                            </span>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                            <!-- Footer -->
+                            <div class="flex flex-col w-full mt-auto">
+                                <!-- Course progress -->
+                                <div class="relative h-0.5">
+                                    <div class="z-10 absolute inset-x-0 h-6 -mt-3"></div>
+                                    <mat-progress-bar class="h-0.5" [value]="100"></mat-progress-bar>
+                                </div>
+
+                                <!-- Course launch button -->
+                                <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
+                                    <a mat-stroked-button [routerLink]="">
+                                        <span class="inline-flex items-center">
+                                            <!-- Started -->
+                                            <ng-container>
+                                                <span>Link</span>
+                                            </ng-container>
+
+                                            <mat-icon class="ml-1.5 icon-size-5"
+                                                [svgIcon]="'heroicons_solid:arrow-small-right'"></mat-icon>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                
+            </ng-container>
+            <ng-container>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 sm:mt-10 ">
+                    <ng-container>
+                        <!-- Course -->
+                        <div class="flex flex-col h-96 shadow rounded-2xl overflow-hidden bg-card max-rac">
+                            <div class="flex flex-col p-6">
+                                <div class="flex items-center justify-between"><div class="py-0.5 px-3 rounded-full text-sm font-semibold text-blue-800 bg-blue-100 dark:text-blue-50 dark:bg-blue-500 ng-star-inserted"> Web </div><!----><!----><div class="flex items-center"><mat-icon role="img" class="mat-icon notranslate mat-mdc-tooltip-trigger icon-size-5 text-green-600 mat-icon-no-color ng-star-inserted" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="check-badge" data-mat-icon-namespace="heroicons_solid" aria-describedby="cdk-describedby-message-ng-1-23" cdk-describedby-host="ng-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
+                                    <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"></path>
+                                </svg></mat-icon><!----><!----><!----></div></div>
+                                <!-- Course title & description -->
+                                <div class="mt-4 text-lg font-medium">Basics of Angular</div>
+                                <div class="mt-0.5 line-clamp-2 text-secondary">Introductory course for Angular and framework basics</div>
+                                <div class="w-12 h-1 my-3 border-t-2"></div>
+                                <!-- Course time -->
+                                <div class="flex items-center leading-5 text-md text-secondary">
+                                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:clock'">
+                                    </mat-icon>
+                                    <div class="ml-1.5">Duration in minutes</div>
+                                </div>
+                                <!-- Course completion -->
+                                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
+                                    <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:academic-cap'">
+                                    </mat-icon>
+
+                                    <ng-container>
+                                        <div class="ml-1.5">
+                                            <span>Completed</span>
+                                            <span class="ml-1">
+                                                <!-- Once -->
+                                                <ng-container>once</ng-container>
+                                            </span>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                            <!-- Footer -->
+                            <div class="flex flex-col w-full mt-auto">
+                                <!-- Course progress -->
+                                <div class="relative h-0.5">
+                                    <div class="z-10 absolute inset-x-0 h-6 -mt-3"></div>
+                                    <mat-progress-bar class="h-0.5" [value]="100"></mat-progress-bar>
+                                </div>
+
+                                <!-- Course launch button -->
+                                <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
+                                    <a mat-stroked-button [routerLink]="">
+                                        <span class="inline-flex items-center">
+                                            <!-- Started -->
+                                            <ng-container>
+                                                <span>Link</span>
+                                            </ng-container>
+
+                                            <mat-icon class="ml-1.5 icon-size-5"
+                                                [svgIcon]="'heroicons_solid:arrow-small-right'"></mat-icon>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                
+            </ng-container>
+        </div>
+
+    </div>
