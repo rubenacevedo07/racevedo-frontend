@@ -17,7 +17,6 @@ export class AuthService {
     private _init: boolean = true;
 
   
-    //private url = 'https://first-rac-backend-az.azurewebsites.net';
     private url = environment.backendUrl;
     /**
      * Constructor
@@ -71,11 +70,6 @@ export class AuthService {
                 // Return a new observable with the response
                 return of(response);
             }),
-            /*catchError(error => {
-                // Handle errors here
-                console.error('Error signing in:', error); // Or handle error as needed
-                return of(false); // Return false on error
-            })*/
         );
     }
 
@@ -112,7 +106,6 @@ export class AuthService {
      * @param email
      */
     forgotPassword(email: string): Observable<any> {
-        //return this._httpClient.post(this.url + '/api/v1/auth/sign-in-with-token', {
         return this._httpClient.post(this.url + '/api/v1/auth/forgot-password', {
             email: email
         }).pipe(
@@ -133,15 +126,11 @@ export class AuthService {
      * @param password
      */
     resetPassword(token: string, passwod: string): Observable<any> {
-        //return this._httpClient.post(this.url + '/api/v1/auth/sign-in-with-token', {
         return this._httpClient.post(this.url + '/api/v1/auth/reset-password', {
             token: token,
             newPassword: passwod
         }).pipe(
             switchMap((response: any) => {
-                // Update logic based on successful response
-                //console.log(response); // Or handle error as needed
-
                 return of(true); // Return true on success
             }),
             catchError(error => {
